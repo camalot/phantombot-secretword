@@ -1,6 +1,6 @@
-.deploy/
+*/.deploy/**\*
+*/.git/**\*
 .deployignore
 .editorconfig
 .git*
-.git/
 Jenkinsfile
