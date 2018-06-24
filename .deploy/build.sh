@@ -45,7 +45,7 @@ mkdir -p "${WORKSPACE}/dist/";
 GLOBIGNORE=".:..";
 EXCLUDE_PATTERS=$(cat ${WORKSPACE}/.deployignore | tr '\n' ' ');
 echo $EXCLUDE_PATTERS;
-zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -x $EXCLUDE_PATTERS -- ${WORKSPACE}/*;
+zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- ${WORKSPACE}/*;
 mv "${PROJECT_NAME}-${BUILD_VERSION}.zip" "${WORKSPACE}/dist/";
 # git archive --format=zip --output="${WORKSPACE}/dist/${PROJECT_NAME}-${BUILD_VERSION}.zip" -9
 
