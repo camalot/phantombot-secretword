@@ -42,11 +42,13 @@ WORKDIR="${WORKSPACE:-"$(pwd)"}";
 
 mkdir -p "${WORKSPACE}/dist/";
 pushd . || exit 9;
-cd "${WORKSPACE}/root" || exit 9;
-pwd;
-zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- *;
+
+EXCLUDE_PATTERS=$(cat ${WORKSPACE}/.deployignore | tr '\n' ' ');
+echo $EXCLUDE_PATTERS;
+
+zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -x $EXCLUDE_PATTERS -- *;
 mv "${PROJECT_NAME}-${BUILD_VERSION}.zip" "${WORKSPACE}/dist/";
-popd || exit 9;
+# git archive --format=zip --output="${WORKSPACE}/dist/${PROJECT_NAME}-${BUILD_VERSION}.zip" -9
 
 unset BUILD_PROJECT;
 unset BUILD_PUSH_REGISTRY;
