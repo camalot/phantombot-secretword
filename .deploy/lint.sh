@@ -33,7 +33,3 @@ ls -lfA "${WORKDIR}";
 docker run --rm \
   -v "${WORKDIR}":/lint \
   -w /lint hyzual/jshint root/scripts/ --verbose;
-
-__info "Running Dockerfile lint";
-	docker run --rm \
-		lukasmartinelli/hadolint < "${WORKDIR}/Dockerfile";
