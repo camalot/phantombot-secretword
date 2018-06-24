@@ -44,7 +44,7 @@ mkdir -p "${WORKSPACE}/dist/";
 pushd . || exit 9;
 cd "${WORKSPACE}/src" || exit 9;
 pwd;
-
+echo *
 zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- *;
 mv "${PROJECT_NAME}-${BUILD_VERSION}.zip" "${WORKSPACE}/dist/";
 popd || exit 9;
