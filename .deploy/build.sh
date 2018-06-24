@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-
+set -e;
 
 base_dir=$(dirname "$0");
 # shellcheck source=/dev/null
@@ -41,15 +41,15 @@ WORKDIR="${WORKSPACE:-"$(pwd)"}";
 [[ -z "${ARTIFACTORY_USERNAME// }" ]] && __error "Environment variable 'ARTIFACTORY_USERNAME' missing or empty.";
 [[ -z "${ARTIFACTORY_PASSWORD// }" ]] && __error "Environment variable 'ARTIFACTORY_PASSWORD' missing or empty.";
 
-mkdir -p "${WORKSPACE}/dist/";
+mkdir -p "${WORKDIR}/dist/";
 pushd . || exit 9;
-cd "${WORKSPACE}/src" || exit 9;
+cd "${WORKDIR}/src" || exit 9;
 
-zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- *
-mv "${PROJECT_NAME}-${BUILD_VERSION}.zip" "${WORKSPACE}/dist/";
+zip -r "${BUILD_PROJECT}-${BUILD_VERSION}.zip" -- *
+mv "${BUILD_PROJECT}-${BUILD_VERSION}.zip" "${WORKDIR}/dist/";
 
 popd || exit 9;
-# git archive --format=zip --output="${WORKSPACE}/dist/${PROJECT_NAME}-${BUILD_VERSION}.zip" -9
+# git archive --format=zip --output="${WORKDIR}/dist/${BUILD_PROJECT}-${BUILD_VERSION}.zip" -9
 
 unset BUILD_PROJECT;
 unset BUILD_PUSH_REGISTRY;
