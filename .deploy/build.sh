@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-set -e;
+
+
 base_dir=$(dirname "$0");
 # shellcheck source=/dev/null
 source "${base_dir}/shared.sh";
