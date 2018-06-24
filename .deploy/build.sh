@@ -43,10 +43,9 @@ WORKDIR="${WORKSPACE:-"$(pwd)"}";
 mkdir -p "${WORKSPACE}/dist/";
 pushd . || exit 9;
 cd "${WORKSPACE}/src" || exit 9;
-shopt -u dotglob;
-zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- lang scripts;
+
+zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- *;
 mv "${PROJECT_NAME}-${BUILD_VERSION}.zip" "${WORKSPACE}/dist/";
-shopt -s dotglob;
 
 popd || exit 9;
 # git archive --format=zip --output="${WORKSPACE}/dist/${PROJECT_NAME}-${BUILD_VERSION}.zip" -9

@@ -33,3 +33,5 @@ ls -lfA "${WORKDIR}";
 docker run --rm \
   -v "${WORKDIR}":/lint \
   -w /lint hyzual/jshint root/scripts/ --verbose;
+
+shopt -u globstar;
