@@ -41,12 +41,13 @@ WORKDIR="${WORKSPACE:-"$(pwd)"}";
 [[ -z "${ARTIFACTORY_PASSWORD// }" ]] && __error "Environment variable 'ARTIFACTORY_PASSWORD' missing or empty.";
 
 mkdir -p "${WORKSPACE}/dist/";
+pushd . || exit 9;
+cd "${WORKSPACE}/src" || exit 9;
+pwd;
 
-GLOBIGNORE=".:..";
-EXCLUDE_PATTERS=$(cat ${WORKSPACE}/.deployignore | tr '\n' ' ');
-echo $EXCLUDE_PATTERS;
-zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- ${WORKSPACE}/*;
+zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -- *;
 mv "${PROJECT_NAME}-${BUILD_VERSION}.zip" "${WORKSPACE}/dist/";
+popd || exit 9;
 # git archive --format=zip --output="${WORKSPACE}/dist/${PROJECT_NAME}-${BUILD_VERSION}.zip" -9
 
 unset BUILD_PROJECT;
