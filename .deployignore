@@ -1,4 +1,6 @@
-/.deploy
-.*
-/.git
+.deploy/
+.deployignore
+.editorconfig
+.git*
+.git/
 Jenkinsfile
