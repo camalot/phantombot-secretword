@@ -43,7 +43,7 @@ WORKDIR="${WORKSPACE:-"$(pwd)"}";
 mkdir -p "${WORKSPACE}/dist/";
 pushd . || exit 9;
 
-EXCLUDE_PATTERS=$(cat ${WORKSPACE}/.deployignore | tr '\n' ' ');
+EXCLUDE_PATTERS=$(cat ${WORKSPACE}/.deployignore | tr '\n' ' ' | tr ' . ' ' ' | tr ' .. ' ' ');
 echo $EXCLUDE_PATTERS;
 
 zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -x $EXCLUDE_PATTERS -- *;
