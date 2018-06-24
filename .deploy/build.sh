@@ -43,10 +43,10 @@ WORKDIR="${WORKSPACE:-"$(pwd)"}";
 mkdir -p "${WORKSPACE}/dist/";
 pushd . || exit 9;
 
-EXCLUDE_PATTERS=$(cat ${WORKSPACE}/.deployignore | tr '\n' ' ' | tr ' . ' ' ' | tr ' .. ' ' ');
+EXCLUDE_PATTERS=$(cat ${WORKSPACE}/.deployignore | tr '\n' ' ');
 echo $EXCLUDE_PATTERS;
 
-zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -x $EXCLUDE_PATTERS -- *;
+zip -r "${PROJECT_NAME}-${BUILD_VERSION}.zip" -x "$EXCLUDE_PATTERS" -- *;
 mv "${PROJECT_NAME}-${BUILD_VERSION}.zip" "${WORKSPACE}/dist/";
 # git archive --format=zip --output="${WORKSPACE}/dist/${PROJECT_NAME}-${BUILD_VERSION}.zip" -9
 
