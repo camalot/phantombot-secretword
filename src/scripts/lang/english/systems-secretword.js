@@ -17,4 +17,4 @@ $.lang.register(
 	"secretword.secret.discovered",
 	"$1 I have added $2 for finding the secret word '$3'. A new word has been chosen."
 );
-$.lan.register("secretword.secret.reveal", "The secret word was '$1'.");
+$.lang.register("secretword.secret.reveal", "The secret word was '$1'.");
