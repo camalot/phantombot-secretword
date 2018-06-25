@@ -49,7 +49,6 @@ zip -r "${BUILD_PROJECT}-${BUILD_VERSION}.zip" -- *
 mv "${BUILD_PROJECT}-${BUILD_VERSION}.zip" "${WORKDIR}/dist/";
 
 popd || exit 9;
-# git archive --format=zip --output="${WORKDIR}/dist/${BUILD_PROJECT}-${BUILD_VERSION}.zip" -9
 
 unset BUILD_PROJECT;
 unset BUILD_PUSH_REGISTRY;
